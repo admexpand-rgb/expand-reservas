@@ -1,0 +1,15 @@
+EXPAND RESERVAS - PWA
+
+Arquivos:
+- index.html
+- manifest.webmanifest
+- icon-180.png
+- icon-192.png
+- icon-512.png
+
+Para o ícone personalizado funcionar no iPhone/Android, estes arquivos precisam
+ser publicados juntos em um endereço HTTPS (por exemplo GitHub Pages, Cloudflare
+Pages, Netlify ou hospedagem própria).
+
+Depois abra o endereço dessa página no Safari/Chrome e use "Adicionar à Tela de Início".
+Na primeira abertura, cole o URL publicado do seu Web App do Google Apps Script.

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Expand Reservas</title>
+
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" sizes="180x180" href="icon-180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+  <meta name="apple-mobile-web-app-title" content="Expand Reservas">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#062B59">
+
+  <style>
+    *{box-sizing:border-box}
+    body{
+      margin:0;min-height:100vh;display:grid;place-items:center;
+      font-family:Arial,Helvetica,sans-serif;background:#f4f6f8;color:#1f2937;
+      padding:24px
+    }
+    .box{
+      width:min(430px,100%);background:#fff;border-radius:22px;padding:26px;
+      box-shadow:0 10px 35px rgba(0,0,0,.10);text-align:center
+    }
+    img{width:132px;height:132px;border-radius:28px;margin-bottom:14px}
+    h1{margin:0 0 8px;color:#062B59}
+    p{line-height:1.5;color:#5b6470}
+    input{
+      width:100%;padding:12px;border:1px solid #ccd5df;border-radius:10px;
+      margin:10px 0;font-size:14px
+    }
+    button{
+      width:100%;border:0;border-radius:10px;padding:13px;
+      background:#062B59;color:#fff;font-weight:700;font-size:15px;cursor:pointer
+    }
+    .obs{font-size:12px;margin-top:12px}
+  </style>
+</head>
+<body>
+  <main class="box">
+    <img src="icon-192.png" alt="Expand Reservas">
+    <h1>Expand Reservas</h1>
+    <p>Informe uma única vez o endereço publicado do seu Web App.</p>
+
+    <input id="url" type="url" placeholder="https://script.google.com/macros/s/.../exec">
+    <button onclick="salvarEAbrir()">Abrir sistema</button>
+
+    <p class="obs">
+      Depois de salvar, este atalho abrirá diretamente o sistema.
+    </p>
+  </main>
+
+  <script>
+    const CHAVE = "expandReservasWebAppUrl";
+    const urlSalva = localStorage.getItem(CHAVE) || "";
+
+    if (urlSalva) {
+      location.replace(urlSalva);
+    }
+
+    document.getElementById("url").value = urlSalva;
+
+    function salvarEAbrir() {
+      const url = document.getElementById("url").value.trim();
+
+      if (!/^https:\/\/script\.google\.com\/macros\/s\/.+\/exec(?:\?.*)?$/.test(url)) {
+        alert("Cole o endereço publicado do Web App terminado em /exec.");
+        return;
+      }
+
+      localStorage.setItem(CHAVE, url);
+      location.replace(url);
+    }
+  </script>
+</body>
+</html>
