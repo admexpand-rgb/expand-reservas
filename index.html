@@ -48,7 +48,7 @@
     <button onclick="salvarEAbrir()">Abrir sistema</button>
 
     <p class="obs">
-      Depois de salvar, este atalho abrirá diretamente o sistema.
+      No iPhone, adicione esta página à Tela de Início antes de tocar em Abrir sistema.
     </p>
   </main>
 
@@ -56,10 +56,10 @@
     const CHAVE = "expandReservasWebAppUrl";
     const urlSalva = localStorage.getItem(CHAVE) || "";
 
-    if (urlSalva) {
-      location.replace(urlSalva);
-    }
-
+    // IMPORTANTE:
+    // Não redirecionar automaticamente ao carregar esta página.
+    // Assim o iPhone permanece no domínio do GitHub Pages e consegue
+    // reconhecer o ícone ao usar "Adicionar à Tela de Início".
     document.getElementById("url").value = urlSalva;
 
     function salvarEAbrir() {
